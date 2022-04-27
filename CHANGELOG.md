@@ -2,12 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.2.19 - Unreleased
+## 1.3.0 - Unreleased
 ### Added
 - Version number to `composer.json`.
 
+### Changed
+- Asset bundle to build with Laravel Mix 6.
+
 ### Removed
 - Duplicate asset bundle compiling the same assets.
+- Various unused dependencies.
 
 ## 1.2.18 - 2020-10-26
 **Undocumented**
