@@ -6,6 +6,9 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Version number to `composer.json`.
 
+### Removed
+- Duplicate asset bundle compiling the same assets.
+
 ## 1.2.18 - 2020-10-26
 **Undocumented**
 
