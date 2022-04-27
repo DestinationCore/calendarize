@@ -8,6 +8,7 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - Asset bundle to build with Laravel Mix 6.
+- "Time Exceptions" to "Time Changes" in field template.
 
 ### Removed
 - Duplicate asset bundle compiling the same assets.
