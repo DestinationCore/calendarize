@@ -50,7 +50,7 @@ class CalendarizeService extends Component
     {
         if (!$date) return '';
         $prefixes = ['First', 'Second', 'Third', 'Fourth', 'Last'];
-        return $prefixes[floor($date->format('j') / 7)] . ' ' . $date->format('l');
+        return $prefixes[floor($date->format('j') / 7) - 1 ] . ' ' . $date->format('l');
     }
 
     /**

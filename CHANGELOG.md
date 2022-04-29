@@ -16,6 +16,9 @@ All notable changes to this project will be documented in this file.
 - Duplicate asset bundle compiling the same assets.
 - Various unused dependencies.
 
+### Fixed
+- Bug where incorrect value was shown for month day on entry load.
+
 ## 1.2.18 - 2020-10-26
 **Undocumented**
 
