@@ -23,6 +23,7 @@
     ],
     "require": {
         "craftcms/cms": "^3.0.0-RC1",
+        "ext-intl": "*",
         "rlanvin/php-rrule": "~1.6.0"
     },
     "autoload": {
