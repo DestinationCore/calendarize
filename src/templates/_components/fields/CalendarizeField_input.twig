@@ -195,34 +195,36 @@
             </div>
         </div>
 
-        <div class="calendar-row calendar-row-column" data-time-exceptions="fields[{{ name }}][timeChanges][][date]" data-if="{{ namespacedId }}-repeats" data-if-value="1">
-            <div class="calendar-row-item">
-                {{
-                    forms.dateTimeField({
-                        label: 'Time Changes'|t("calendarize"),
-                        id: name ~ 'TimeChanges',
-                        name: name ~ '[timeChanges]',
-                        value: null,
-                        timeException: true,
-                        minuteIncrement: 15
-                    })
-                }}
+        {% if settings.allowTimeChanges ? true : value.timeChanges %}
+            <div class="calendar-row calendar-row-column" data-time-exceptions="fields[{{ name }}][timeChanges][][date]" data-if="{{ namespacedId }}-repeats" data-if-value="1">
+                <div class="calendar-row-item">
+                    {{
+                        forms.dateTimeField({
+                            label: 'Time Changes'|t("calendarize"),
+                            id: name ~ 'TimeChanges',
+                            name: name ~ '[timeChanges]',
+                            value: null,
+                            timeException: true,
+                            minuteIncrement: 15
+                        })
+                    }}
+                </div>
+                <div class="calendar-row-item">
+                    <ul class="exceptions-list">
+                        {% if value.timeChanges is defined %}
+                            {% for key, change in value.timeChanges %}
+                                <li>
+                                    <div data-icon="remove"></div><p>{{ change | date('l, m/d/Y h:i a') }}</p>
+                                    <input type="hidden" name="{{name}}[timeChanges][{{key}}][date]" value="{{ change | date('m/d/Y') }}" />
+                                    <input type="hidden" name="{{name}}[timeChanges][{{key}}][time]" value="{{ change | date('h:i A') }}" />
+                                    <input type="hidden" name="{{name}}[timeChanges][{{key}}][timezone]" value="{{ craft.app.getTimeZone() }}">
+                                </li>
+                            {% endfor %}
+                        {% endif %}
+                    </ul>
+                </div>
             </div>
-            <div class="calendar-row-item">
-                <ul class="exceptions-list">
-                    {% if value.timeChanges is defined %}
-                        {% for key, change in value.timeChanges %}
-                            <li>
-                                <div data-icon="remove"></div><p>{{ change | date('l, m/d/Y h:i a') }}</p>
-                                <input type="hidden" name="{{name}}[timeChanges][{{key}}][date]" value="{{ change | date('m/d/Y') }}" />
-                                <input type="hidden" name="{{name}}[timeChanges][{{key}}][time]" value="{{ change | date('h:i A') }}" />
-                                <input type="hidden" name="{{name}}[timeChanges][{{key}}][timezone]" value="{{ craft.app.getTimeZone() }}">
-                            </li>
-                        {% endfor %}
-                    {% endif %}
-                </ul>
-            </div>
-        </div>
+        {% endif %}
     </div>
 
     {% if value is defined and value.startDate %}
@@ -230,16 +232,17 @@
             <p>
                 {% if value.hasPassed %}{{'Date'|t("calendarize")}}:{% else %}{{'Next Occurrence'|t("calendarize")}}:{% endif %}
                 {% if value.allDay %}
-                    <b>{{ value.next.format('m/d/Y') }}</b>
+                    <b>{{ value.next|date('short') }}</b>
                 {% else %}
-                    <b>{{ value.next.format('m/d/Y @ h:i:s a') }}</b>
+                    <b>{{ value.next|datetime('short') }}</b>
                 {% endif %}
             </p>
             {% if value.repeats %}
                 <ul>
                     <li>{{'Occurrences'|t("calendarize")}}:</li>
                     {% for occurrence in value.getOccurrences(10) %}
-                        <li>{{ occurrence.format('m/d/Y @ h:i:s a') }}</li>
+
+                        <li>{{ occurrence|datetime('short') }} - {{ occurrence.end|datetime('h:i') }}</li>
                     {% endfor %}
                     {% if value.getOccurrences | length > 10 %}
                         <li>...</li>

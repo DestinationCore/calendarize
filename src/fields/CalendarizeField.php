@@ -204,6 +204,7 @@ class CalendarizeField extends Field implements PreviewableFieldInterface
                 'field' => $this,
                 'id' => $id,
                 'namespacedId' => $namespacedId,
+                'settings' => Calendarize::$plugin->getSettings()
             ]
         );
     }

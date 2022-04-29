@@ -5,10 +5,12 @@ All notable changes to this project will be documented in this file.
 ## 1.3.0 - Unreleased
 ### Added
 - Version number to `composer.json`.
+- Field time changes can be disabled within plugin settings.
 
 ### Changed
 - Asset bundle to build with Laravel Mix 6.
 - "Time Exceptions" to "Time Changes" in field template.
+- Date formatting now runs via a Craft filter to apply user locale.
 
 ### Removed
 - Duplicate asset bundle compiling the same assets.

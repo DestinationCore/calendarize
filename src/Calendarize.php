@@ -55,7 +55,7 @@ class Calendarize extends Plugin
     /**
      * @var boolean
      */
-    public $hasSettings = false;
+    public $hasCpSettings = true;
 
     /**
      * @var boolean

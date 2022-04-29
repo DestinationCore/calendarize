@@ -16,3 +16,11 @@
 {% import "_includes/forms" as forms %}
 
 {% do view.registerAssetBundle("unionco\\calendarize\\assetbundles\\cpbundle\\CpAssetBundle") %}
+
+{{ forms.lightswitchField({
+    label: 'Allow Time Changes',
+    name: 'allowTimeChanges',
+    on: settings.allowTimeChanges,
+    errors: settings.getErrors('allowTimeChanges'),
+    instructions: 'Whether time changes should be allowed on the field.'
+}) }}
