@@ -185,7 +185,7 @@
                         {% for key, exception in value.exceptions %}
                             <li>
                                 <div data-icon="remove"></div>
-                                <p>{{ exception | date('l, d/m/Y') }}</p>
+                                <p>{{ exception | date('short') }}</p>
                                 <input type="hidden" name="{{ name }}[exceptions][{{ key }}][date]" value="{{ exception | date('short') }}"/>
                                 <input type="hidden" name="{{ name }}[exceptions][{{ key }}][timezone]" value="{{ craft.app.getTimeZone() }}"/>
                             </li>
