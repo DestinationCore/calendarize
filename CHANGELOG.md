@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.3.0 - Unreleased
+## 1.3.0 - 29-04-22
 ### Added
 - Version number to `composer.json`.
 - Field time changes can be disabled within plugin settings.
