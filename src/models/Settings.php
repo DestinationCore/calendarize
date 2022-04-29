@@ -22,22 +22,21 @@ use craft\base\Model;
  */
 class Settings extends Model
 {
-    // Public Properties
-    // =========================================================================
-
     /**
-     * @var string
+     * Whether time changes should be allowed on the field.
+     *
+     * @var bool
      */
-    // public $someAttribute = 'Some Default';
-
-    // Public Methods
-    // =========================================================================
+    public bool $allowTimeChanges = true;
 
     /**
      * @inheritdoc
      */
     public function rules()
     {
-        return [];
+        return [
+            [['allowTimeChanges'], 'boolean'],
+            [['allowTimeChanges'], 'required']
+        ];
     }
 }

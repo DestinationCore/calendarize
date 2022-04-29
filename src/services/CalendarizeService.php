@@ -22,6 +22,7 @@ use craft\helpers\StringHelper;
 use craft\helpers\Json;
 use DateTime;
 use DateTimeZone;
+use NumberFormatter;
 use unionco\calendarize\Calendarize;
 use unionco\calendarize\fields\CalendarizeField;
 use unionco\calendarize\models\CalendarizeModel;
@@ -49,8 +50,12 @@ class CalendarizeService extends Component
     public function weekMonthText($date): string
     {
         if (!$date) return '';
-        $prefixes = ['First', 'Second', 'Third', 'Fourth', 'Last'];
-        return $prefixes[floor($date->format('j') / 7)] . ' ' . $date->format('l');
+
+        $nf = new NumberFormatter(
+            Craft::$app->getUser()->getIdentity()->getPreferredLocale() ?? 'en-US', NumberFormatter::ORDINAL
+        );
+
+        return $nf->format(floor($date->format('j') / 7)) . ' ' . $date->format('l');
     }
 
     /**

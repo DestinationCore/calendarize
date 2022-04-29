@@ -1,0 +1,21 @@
+{
+  "name": "calendarize-cp-bundle",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npm run development",
+    "development": "npx mix",
+    "watch": "npx mix watch",
+    "hot": "npx mix watch --hot",
+    "prod": "npm run production",
+    "production": "npx mix --production"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.0",
+    "cross-env": "^7.0",
+    "laravel-mix": "^6.0",
+    "moment": "^2.23.0",
+    "resolve-url-loader": "^4.0.0",
+    "sass": "^1.45.1",
+    "sass-loader": "^12.4.0"
+  }
+}

@@ -29,14 +29,13 @@ class CpAssetBundle extends AssetBundle
      */
     public function init()
     {
-        $this->sourcePath = "@unionco/calendarize/assetbundles/resources/dist";
+        $this->sourcePath = "@unionco/calendarize/assetbundles/cpbundle/dist";
 
         $this->depends = [
             CpAsset::class,
         ];
 
         $this->js = [
-            'js/vendor.js',
             'js/main.js',
         ];
 

@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.3.0 - Unreleased
+### Added
+- Version number to `composer.json`.
+- Field time changes can be disabled within plugin settings.
+
+### Changed
+- Asset bundle to build with Laravel Mix 6.
+- "Time Exceptions" to "Time Changes" in field template.
+- Date formatting now runs via a Craft filter to apply user locale.
+- Ordinal is now returned for on month day repeat options in Calendarize service to match how it is updated in JS.
+
+### Removed
+- Duplicate asset bundle compiling the same assets.
+- Various unused dependencies.
+
+### Fixed
+- Bug where incorrect value was shown for month day repeat on entry load.
+
+## 1.2.18 - 2020-10-26
+**Undocumented**
+
+## 1.2.17 - 2020-10-23
+**Undocumented**
+
 ## 1.2.16 - 2019-08-29
 ### Updated
 - Updating wording around the repeat frequency closes [#28](https://github.com/unionco/calendarize/issues/28)

@@ -18,7 +18,7 @@ use craft\base\ElementInterface;
 use unionco\calendarize\Calendarize;
 use craft\base\PreviewableFieldInterface;
 use craft\elements\db\ElementQueryInterface;
-use unionco\calendarize\assetbundles\fieldbundle\FieldAssetBundle;
+use unionco\calendarize\assetbundles\cpbundle\CpAssetBundle;
 
 /**
  * @author    Franco Valdes
@@ -192,7 +192,7 @@ class CalendarizeField extends Field implements PreviewableFieldInterface
         $locale = Craft::$app->getLocale()->id;
         $dateFormat = Craft::$app->getLocale()->getDateFormat(Locale::LENGTH_MEDIUM);
 
-        $view->registerAssetBundle(FieldAssetBundle::class);
+        $view->registerAssetBundle(CpAssetBundle::class);
         $view->registerJs("new Calendarize('{$namespacedId}', '{$locale}', '{$dateFormat}');");
 
         // Render the input template
@@ -204,6 +204,7 @@ class CalendarizeField extends Field implements PreviewableFieldInterface
                 'field' => $this,
                 'id' => $id,
                 'namespacedId' => $namespacedId,
+                'settings' => Calendarize::$plugin->getSettings()
             ]
         );
     }
