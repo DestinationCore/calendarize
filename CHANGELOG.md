@@ -11,13 +11,14 @@ All notable changes to this project will be documented in this file.
 - Asset bundle to build with Laravel Mix 6.
 - "Time Exceptions" to "Time Changes" in field template.
 - Date formatting now runs via a Craft filter to apply user locale.
+- Ordinal is now returned for on month day repeat options in Calendarize service to match how it is updated in JS.
 
 ### Removed
 - Duplicate asset bundle compiling the same assets.
 - Various unused dependencies.
 
 ### Fixed
-- Bug where incorrect value was shown for month day on entry load.
+- Bug where incorrect value was shown for month day repeat on entry load.
 
 ## 1.2.18 - 2020-10-26
 **Undocumented**
