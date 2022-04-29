@@ -214,9 +214,9 @@
                         {% if value.timeChanges is defined %}
                             {% for key, change in value.timeChanges %}
                                 <li>
-                                    <div data-icon="remove"></div><p>{{ change | date('l, m/d/Y h:i a') }}</p>
-                                    <input type="hidden" name="{{name}}[timeChanges][{{key}}][date]" value="{{ change | date('m/d/Y') }}" />
-                                    <input type="hidden" name="{{name}}[timeChanges][{{key}}][time]" value="{{ change | date('h:i A') }}" />
+                                    <div data-icon="remove"></div><p>{{ change | datetime('short') }}</p>
+                                    <input type="hidden" name="{{name}}[timeChanges][{{key}}][date]" value="{{ change | date('short') }}" />
+                                    <input type="hidden" name="{{name}}[timeChanges][{{key}}][time]" value="{{ change | time('short') }}" />
                                     <input type="hidden" name="{{name}}[timeChanges][{{key}}][timezone]" value="{{ craft.app.getTimeZone() }}">
                                 </li>
                             {% endfor %}
@@ -241,8 +241,7 @@
                 <ul>
                     <li>{{'Occurrences'|t("calendarize")}}:</li>
                     {% for occurrence in value.getOccurrences(10) %}
-
-                        <li>{{ occurrence|datetime('short') }} - {{ occurrence.end|datetime('h:i') }}</li>
+                        <li>{{ occurrence|datetime('short') }} - {{ occurrence.end|datetime('short') }}</li>
                     {% endfor %}
                     {% if value.getOccurrences | length > 10 %}
                         <li>...</li>
