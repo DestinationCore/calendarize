@@ -394,8 +394,6 @@ class CalendarizeService extends Component
      */
     public function saveField(CalendarizeField $field, ElementInterface $owner): bool
     {
-        /** @var Element $owner */
-        $locale = $owner->getSite()->language;
         /** @var Map $value */
         $value = $owner->getFieldValue($field->handle);
 
@@ -427,7 +425,13 @@ class CalendarizeService extends Component
             $record->months         = $value->months ?? null;
 
             if (isset($value->endRepeatDate)) {
-                $record->endRepeatDate = Db::prepareDateForDb($value->endRepeatDate);
+                $endRepeat = $value->endRepeatDate;
+
+                if ($endRepeat instanceof DateTime) {
+                    $endRepeat->setTime(23, 59, 59);
+                }
+
+                $record->endRepeatDate = Db::prepareDateForDb($endRepeat);
             }
 
             if (isset($value->exceptions)) {
