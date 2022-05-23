@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.1 - 23-05-22
+### Fixed
+- `endRepeatDate` `DateTime` object time manually set to end of day (23:59:59).
+
 ## 1.4.0 - 29-04-22
 ### Added
 - Version number to `composer.json`.
