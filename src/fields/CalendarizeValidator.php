@@ -10,6 +10,7 @@
 namespace unionco\calendarize\fields;
 
 use yii\validators\Validator;
+use Craft;
 
 class CalendarizeValidator extends Validator {
 
@@ -20,9 +21,19 @@ class CalendarizeValidator extends Validator {
 	{
         if ($value->startDate && !$value->endDate) {
             return [
-                \Craft::t(
+                Craft::t(
                     'calendarize',
-                    'End Date must be set if start date is not null'
+                    'End Date must be set if the start date is set.'
+                ),
+                []
+            ];
+        }
+
+        if (!$value->startDate && $value->endDate) {
+            return [
+                Craft::t(
+                    'calendarize',
+                    'Start Date must be set if the end date is set.'
                 ),
                 []
             ];
@@ -31,7 +42,7 @@ class CalendarizeValidator extends Validator {
         if ($value->startDate && $value->endDate) {
             if ($value->endDate < $value->startDate) {
                 return [
-                    \Craft::t(
+                    Craft::t(
                         'calendarize',
                         'End Date must be greater than or equal to your Start Date'
                     ),
@@ -42,7 +53,7 @@ class CalendarizeValidator extends Validator {
 
         if (isset($value->endRepeat) && $value->endRepeat === 'date' && !$value->endRepeatDate) {
             return [
-                    \Craft::t(
+                    Craft::t(
                         'calendarize',
                         'End Repeat Date is required if repeating ends on date'
                     ),

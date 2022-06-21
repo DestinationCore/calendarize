@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.2 - 21-06-22
+### Added:
+- Validation for if the end date is set but start date isn't.
+
+### Changed:
+- Validation messages to be more user friendly.
+
 ## 1.4.1 - 23-05-22
 ### Fixed
 - `endRepeatDate` `DateTime` object time manually set to end of day (23:59:59).
