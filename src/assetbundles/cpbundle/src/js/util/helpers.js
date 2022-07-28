@@ -3,7 +3,7 @@ import moment from 'moment';
 export default {};
 
 export const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-export const prefixes = ['First', 'Second', 'Third', 'Fourth', 'Last'];
+export const prefixes = ['1st', '2nd', '3rd', '4th', 'Last'];
 
 export const setLocale = (locale) => {
     moment.locale(locale);
@@ -51,7 +51,7 @@ export const weekAndDay = (dateString) => {
     const day = date.format('dddd');
     
     if (week === 1) {
-        return `First ${day}`;
+        return `1st ${day}`;
     }
 
     const isLastWeek = weekIndex(moment(date).add(1, 'week')) < week ? true : false;
