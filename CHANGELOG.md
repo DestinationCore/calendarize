@@ -2,18 +2,25 @@
 
 All notable changes to this project will be documented in this file.
 
-## 1.4.2 - 21-06-22
+## 1.4.3 - 2022-07-28
+### Changed
+- JS to ordinals that match PHP
+
+### Fixed
+- Bug where week number was incorrectly rounded.
+
+## 1.4.2 - 2022-06-22
 ### Added:
 - Validation for if the end date is set but start date isn't.
 
 ### Changed:
 - Validation messages to be more user friendly.
 
-## 1.4.1 - 23-05-22
+## 1.4.1 - 2022-05-23
 ### Fixed
 - `endRepeatDate` `DateTime` object time manually set to end of day (23:59:59).
 
-## 1.4.0 - 29-04-22
+## 1.4.0 - 2022-04-29
 ### Added
 - Version number to `composer.json`.
 - Field time changes can be disabled within plugin settings.
