@@ -55,7 +55,7 @@ class CalendarizeService extends Component
             Craft::$app->getUser()->getIdentity()->getPreferredLocale() ?? 'en-US', NumberFormatter::ORDINAL
         );
 
-        return $nf->format(floor($date->format('j') / 7)) . ' ' . $date->format('l');
+        return $nf->format(ceil($date->format('j') / 7)) . ' ' . $date->format('l');
     }
 
     /**
