@@ -1,7 +1,7 @@
 {
     "name": "unionco/calendarize",
     "description": "A calendar field type providing functionality for recurrence.",
-    "version": "1.4.3",
+    "version": "1.4.4",
     "type": "craft-plugin",
     "keywords": [
         "craft",

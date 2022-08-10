@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## 1.4.4 - 2022-08-10
+### Added
+- `nesbot/carbon` package.
+
+### Changed
+- Locked package versions.
+
+### Fixed
+- `weekMonthText` service function to handle "last" occurrences.
+- `weekOfMonth` service function to correctly return data for the `RRULE` `BYDAY`.
+
 ## 1.4.3 - 2022-07-28
 ### Changed
 - JS to ordinals that match PHP
