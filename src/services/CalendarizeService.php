@@ -11,6 +11,7 @@
 
 namespace unionco\calendarize\services;
 
+use Carbon\Carbon;
 use Craft;
 use craft\base\Component;
 use craft\base\ElementInterface;
@@ -35,17 +36,14 @@ use unionco\calendarize\records\CalendarizeRecord;
  */
 class CalendarizeService extends Component
 {
-    // Private Properties
-    // =========================================================================
-
     /** @var CalendarModel[] */
     private $entryCache = [];
 
-    // Public Methods
-    // =========================================================================
-
     /**
+     * Return text version of week number within the month for a given date.
      *
+     * @param $date
+     * @return string
      */
     public function weekMonthText($date): string
     {
@@ -55,17 +53,24 @@ class CalendarizeService extends Component
             Craft::$app->getUser()->getIdentity()->getPreferredLocale() ?? 'en-US', NumberFormatter::ORDINAL
         );
 
-        return $nf->format(ceil($date->format('j') / 7)) . ' ' . $date->format('l');
+        $weekNumber = Carbon::make($date)->weekNumberInMonth;
+
+        return ($weekNumber === 5 ? 'Last' : $nf->format($weekNumber)) . " {$date->format('l')}";
     }
 
     /**
+     * Return week number within the month for a given date.
      *
+     * @param $date
+     * @return int|null
      */
-    public function weekOfMonth($date): string
+    public function weekOfMonth($date): ?int
     {
-        if (!$date) return '';
-        $prefixes = [1, 2, 3, 4, -1];
-        return $prefixes[floor($date->format('j') / 7)];
+        if (! $date) return null;
+
+        $weekNumber = Carbon::make($date)->weekNumberInMonth;
+
+        return $weekNumber === 5 ? -1 : $weekNumber;
     }
 
     /**
