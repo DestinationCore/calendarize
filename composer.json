@@ -22,9 +22,10 @@
         }
     ],
     "require": {
-        "craftcms/cms": "^3.0.0-RC1",
+        "craftcms/cms": "^3.0",
         "ext-intl": "*",
-        "rlanvin/php-rrule": "~1.6.0"
+        "rlanvin/php-rrule": "^1.6",
+        "nesbot/carbon": "^2.59"
     },
     "autoload": {
         "psr-4": {
