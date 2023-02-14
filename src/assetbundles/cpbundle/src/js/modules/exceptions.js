@@ -96,7 +96,7 @@ class CalendarException {
 
             this.listing.appendChild(li);
 
-            Craft.cp.displayNotice("Added date exception for " + localizedMoment.format('DD-MM-YYYY') + ".");
+            Craft.cp.displayNotice("Added date exception for " + getLocalizedDayName(localizedMoment) + ', ' + localizedMoment.format('L') + ".");
         })
     }
 
