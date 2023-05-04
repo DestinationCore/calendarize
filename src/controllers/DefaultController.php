@@ -33,11 +33,11 @@ class DefaultController extends Controller
     // =========================================================================
 
     /**
-     * @var    bool|array Allows anonymous access to this controller's actions.
+     * @var    array|int|bool Allows anonymous access to this controller's actions.
      *         The actions must be in 'kebab-case'
      * @access protected
      */
-    protected $allowAnonymous = ['make-ics', 'make-section-ics'];
+    protected array|int|bool $allowAnonymous = ['make-ics', 'make-section-ics'];
 
     // Public Methods
     // =========================================================================

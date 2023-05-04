@@ -12,6 +12,7 @@ namespace unionco\calendarize;
 
 use Craft;
 use craft\base\Element;
+use craft\base\Model;
 use craft\base\Plugin;
 use craft\elements\Entry;
 use craft\elements\db\ElementQuery;
@@ -55,22 +56,22 @@ class Calendarize extends Plugin
     /**
      * @var boolean
      */
-    public $hasCpSettings = true;
+    public bool $hasCpSettings = true;
 
     /**
      * @var boolean
      */
-    public $hasCpSection = false;
+    public bool $hasCpSection = false;
 
     /**
      * @var string
      */
-    public $changelogUrl = "https://raw.githubusercontent.com/unionco/calendarize/master/CHANGELOG.md";
+    public string $changelogUrl = "https://raw.githubusercontent.com/unionco/calendarize/master/CHANGELOG.md";
 
     /**
      * @var string
      */
-    public $schemaVersion = '1.3.0';
+    public string $schemaVersion = '1.3.0';
 
     // Public Methods
     // =========================================================================
@@ -162,7 +163,7 @@ class Calendarize extends Plugin
         );
     }
 
-    public function afterInstall()
+    public function afterInstall(): void
 	{
 		parent::afterInstall();
     }
@@ -173,7 +174,7 @@ class Calendarize extends Plugin
     /**
      * @inheritdoc
      */
-    protected function createSettingsModel()
+    protected function createSettingsModel(): Model
     {
         return new Settings();
     }
@@ -181,7 +182,7 @@ class Calendarize extends Plugin
     /**
      * @inheritdoc
      */
-    protected function settingsHtml(): string
+    protected function settingsHtml(): ?string
     {
         return Craft::$app->view->renderTemplate(
             'calendarize/settings',
