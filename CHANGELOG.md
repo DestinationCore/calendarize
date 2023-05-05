@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file.
 
+## 2.0.0 - 2023-05-05
+### Added
+- Craft 4 Support
+
 ## 1.5.0 - 2023-02-15
 ### Added
 - CP notice when a date has been added to exceptions.
