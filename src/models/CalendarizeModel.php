@@ -324,7 +324,7 @@ class CalendarizeModel extends Model
                     'FREQ'       => "DAILY",
                     'INTERVAL'   => 1,
                     'DTSTART'    => $this->startDate,
-                    'UNTIL'      => $this->startDate
+                    'UNTIL'      => $this->endDate
                 ];
                 $this->repeatType = 'daily';
             }
