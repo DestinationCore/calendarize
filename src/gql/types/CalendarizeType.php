@@ -31,23 +31,25 @@ class CalendarizeType {
         return [
             'next' => [
                 'name' => 'next',
-                'type' => Type::string(),
+                'type' => Type::listOf(Type::int()),
                 'description' => 'The next occurrence of this event',
+                'resolve' => function($source, $args, $context, $info) {
+                    return [$source->next()->start->getTimestamp(), $source->next()->end->getTimestamp()];
+                }
             ],
             'occurrences' => [
                 'name' => 'occurrences',
-                'type' => Type::listOf(Type::number()),
+                'type' => Type::listOf(Type::listOf(Type::int())),
                 'complexity' => Gql::singleQueryComplexity(),
                 'description' => 'All occurrences of this event',
                 'resolve' => function($source, $args, $context, $info) {
                     $timestamps = [];
-                    $rrule = $source->rrule();
 
-                    // Add all occurrences
-                    foreach ($rrule as $occurrence) {
-                        $timestamps[] = $occurrence->getTimestamp();
+                    $occurrences = $source->getOccurrences(500);
+                    foreach($occurrences as $occurrence) {
+                        $timesstamps[] = [$occurrence->start->getTimestamp(), $occurrence->end->getTimestamp()];
                     }
-                    return $timestamps;
+                    return $timesstamps;
                 },
             ],
         ];
