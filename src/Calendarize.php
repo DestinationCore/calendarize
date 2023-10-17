@@ -19,12 +19,16 @@ use craft\elements\db\ElementQuery;
 use craft\elements\db\EntryQuery;
 use craft\events\CancelableEvent;
 use craft\events\RegisterComponentTypesEvent;
+use craft\events\RegisterGqlTypesEvent;
 use craft\events\RegisterTemplateRootsEvent;
 use craft\events\RegisterElementSortOptionsEvent;
 use craft\services\Fields;
+use craft\services\Gql;
 use craft\web\twig\variables\CraftVariable;
 use craft\web\View;
+use rynpsc\phonenumber\gql\types\PhoneNumberType;
 use unionco\calendarize\fields\CalendarizeField;
+use unionco\calendarize\gql\types\CalendarizeType;
 use unionco\calendarize\models\Settings;
 use unionco\calendarize\services\CalendarizeService;
 use unionco\calendarize\services\ICS;
@@ -107,6 +111,14 @@ class Calendarize extends Plugin
             Fields::EVENT_REGISTER_FIELD_TYPES,
             function (RegisterComponentTypesEvent $event) {
                 $event->types[] = CalendarizeField::class;
+            }
+        );
+
+        Event::on(
+            Gql::class,
+            Gql::EVENT_REGISTER_GQL_TYPES,
+            function(RegisterGqlTypesEvent $event) {
+                $event->types[] = CalendarizeType::class;
             }
         );
 
