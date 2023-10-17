@@ -90,7 +90,7 @@ body {}
         position: absolute;
 
         &:checked + .day-box {
-            background: #F1F5F8;
+            background: #dfe5ec;
         }
 
         &:checked + .day-box:before {
