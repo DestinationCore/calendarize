@@ -26,7 +26,6 @@ use craft\services\Fields;
 use craft\services\Gql;
 use craft\web\twig\variables\CraftVariable;
 use craft\web\View;
-use rynpsc\phonenumber\gql\types\PhoneNumberType;
 use unionco\calendarize\fields\CalendarizeField;
 use unionco\calendarize\gql\types\CalendarizeType;
 use unionco\calendarize\models\Settings;
