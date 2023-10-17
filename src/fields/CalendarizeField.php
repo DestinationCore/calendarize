@@ -19,6 +19,7 @@ use unionco\calendarize\Calendarize;
 use craft\base\PreviewableFieldInterface;
 use craft\elements\db\ElementQueryInterface;
 use unionco\calendarize\assetbundles\cpbundle\CpAssetBundle;
+use unionco\calendarize\gql\types\CalendarizeType;
 
 /**
  * @author    Franco Valdes
@@ -125,6 +126,14 @@ class CalendarizeField extends Field implements PreviewableFieldInterface
 			[CalendarizeValidator::class, 'on' => Element::SCENARIO_LIVE],
 		];
 	}
+
+    /**
+     * @inheritdoc
+     */
+    public function getContentGqlType(): array|\GraphQL\Type\Definition\Type
+    {
+        return CalendarizeType::getType();
+    }
 
     /**
      * @inheritdoc

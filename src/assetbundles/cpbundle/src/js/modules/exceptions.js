@@ -66,7 +66,7 @@ class CalendarException {
 
             // create base inputs
             const localizedMoment = getLocalizeMoment(this.dateField.value);
-            let newValue = localizedMoment.format('D/M/Y');
+            let newValue = localizedMoment.format('Y-M-D');
 
             const name = this.hiddenName;
             const position = name.indexOf('[date]');

@@ -3,6 +3,7 @@
 .env.php
 .env.sh
 .env
+.idea
 
 # COMPOSER
 /vendor
